@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Arimo:400|Raleway:300,400,700&display=swap");
+
 body {
   font-family: "Raleway", sans-serif;
   color: #fff;
@@ -34,8 +34,20 @@ body.offcanvas:before {
 }
 
 body, .unslate_co--site-inner {
-  background: #000;
+  background: #da96b6; /* color fondo */
 }
+
+blockquote {
+  margin: 0 0 1rem;
+  color: #103a5e;
+}
+
+#credito {
+  background-color: #e9307e; /* Cambia este valor por el color que desees */
+  color: #333; /* Cambia este valor si deseas cambiar el color del texto */
+}
+
+
 
 ::-moz-selection {
   background: #000;
@@ -46,6 +58,25 @@ body, .unslate_co--site-inner {
   background: #000;
   color: #fff;
 }
+
+.logo {
+  max-width: 100%;
+  height: auto;
+  width: 100%; /* Asegura que el logo sea responsive */
+}
+
+@media (min-width: 768px) {
+  .logo {
+    width: 50%; /* Ajusta el ancho del logo en pantallas más grandes */
+  }
+}
+
+@media (min-width: 1024px) {
+  .logo {
+    width: 80%; /* Ajusta el ancho del logo en pantallas aún más grandes */
+  }
+}
+
 
 a {
   -webkit-transition: .3s all ease;
@@ -471,7 +502,7 @@ a, a:hover {
   left: 0;
   top: 0;
   margin-top: -130px;
-  background: #fff !important;
+  background: #ff196f !important;
   -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   padding-top: 5px;
@@ -772,7 +803,7 @@ a, a:hover {
 }
 
 .cover-v1 .subheading {
-  font-size: 33px;
+  font-size: 25px;
   color: #fff;
 }
 
@@ -980,7 +1011,7 @@ a, a:hover {
 }
 
 .portfolio-item .overlay:before, .blog-item .overlay:before {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.2); /*pone en gris todo*/
   content: "";
 }
 
@@ -1343,19 +1374,20 @@ figure.dotted-bg:before {
 .testimonial-v1 {
   text-align: center;
   z-index: 9;
+ 
 }
 
 .testimonial-v1 .testimonial-inner-bg {
   padding: 50px;
   padding-bottom: 70px;
-  background-color: #212121;
+
   text-align: center;
   font-size: 20px;
   line-height: 40px;
   position: relative;
   z-index: 1;
-  -webkit-box-shadow: 0px 30px 0 -20px #d63447;
-  box-shadow: 0px 30px 0 -20px #d63447;
+  -webkit-box-shadow: 0px 30px 0 -20px #f62c95;
+  box-shadow: 0px 30px 0 -20px #b71b67;
 }
 
 @media (max-width: 991.98px) {
@@ -2034,7 +2066,7 @@ span.error {
   left: 0;
   right: 0;
   bottom: 0;
-  background: black;
+ /*  background: rgb(168, 9, 69);Color de fondo que revela el texto */
 }
 
 .gsap-reveal-hero {
@@ -2053,7 +2085,7 @@ span.error {
   left: 0;
   width: 100%;
   height: 100%;
-  background: #d63447;
+ /* background: #aa106f;  Color de fondo que revela el texto */
   margin-left: -100%;
   z-index: 2;
 }

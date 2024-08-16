@@ -1,55 +1,59 @@
+// Inicializa AOS (Animate On Scroll) con opciones personalizadas
 AOS.init({
- 	duration: 800,
- 	easing: 'ease',
- 	once: true,
- 	offset: -100
-});
+	duration: 800, // Duración de la animación en milisegundos
+	easing: 'ease', // Tipo de suavizado de la animación
+	once: true, // Si la animación debe ocurrir solo una vez
+	offset: -100 // Desplazamiento desde el borde del viewport para activar la animación
+  });
 
+
+  // Función principal para ejecutar varias funciones al cargar la página
 jQuery(function($) {
-	
-	'use strict';
-	loader();
-	siteMenuClone();
-	mobileToggleClick();
-	onePageNavigation();
-	siteIstotope();
-	portfolioItemClick();
-	owlCarouselPlugin();
-	floatingLabel();
-	scrollWindow();
-	counter();
-	jarallaxPlugin();
-	contactForm();
-	stickyFillPlugin();
-	animateReveal();
+	'use strict'; // Utiliza modo estricto para evitar errores sutiles
+	loader(); // Llama a la función para manejar la carga de la página
+	siteMenuClone(); // Clona el menú para la vista móvil
+	mobileToggleClick(); // Maneja el clic en el botón de menú móvil
+	onePageNavigation(); // Configura la navegación de una sola página
+	siteIstotope(); // Inicializa y configura Isotope para el filtrado de elementos
+	portfolioItemClick(); // Maneja los clics en los elementos del portafolio
+	owlCarouselPlugin(); // Configura los carruseles de Owl
+	floatingLabel(); // Maneja las etiquetas flotantes en los formularios
+	scrollWindow(); // Maneja la animación basada en el desplazamiento de la ventana
+	counter(); // Inicializa los contadores en la página
+	jarallaxPlugin(); // Configura el efecto de parallax
+	stickyFillPlugin(); // Aplica Stickyfill para mantener elementos pegajosos
+	animateReveal(); // Maneja las animaciones de revelado en la página
+  });
 
-});
-
+// Función para inicializar y configurar Isotope para el filtrado de elementos
 var siteIstotope = function() {
 	var $container = $('#posts').isotope({
-    itemSelector : '.item',
-    isFitWidth: true
-  });
+	  itemSelector : '.item', // Selector para los elementos a filtrar
+	  isFitWidth: true // Ajusta el ancho del contenedor a los elementos
+	});
 
-  $(window).resize(function(){
+ // Ajusta el ancho de las columnas cuando se redimensiona la ventana
+ $(window).resize(function(){
     $container.isotope({
-      columnWidth: '.col-sm-3'
+      columnWidth: '.col-sm-3' // Ancho de las columnas
     });
   });
-  
-  $container.isotope({ filter: '*' });
 
-  $('#filters').on( 'click', 'a', function(e) {
-  	e.preventDefault();
-    var filterValue = $(this).attr('data-filter');
-    $container.isotope({ filter: filterValue });
-    $('#filters a').removeClass('active');
-    $(this).addClass('active');
+  
+  $container.isotope({ filter: '*' }); // Muestra todos los elementos inicialmente
+
+  // Maneja el clic en los filtros para mostrar los elementos correspondientes
+  $('#filters').on('click', 'a', function(e) {
+    e.preventDefault(); // Previene el comportamiento por defecto del enlace
+    var filterValue = $(this).attr('data-filter'); // Obtiene el valor del filtro
+    $container.isotope({ filter: filterValue }); // Aplica el filtro
+    $('#filters a').removeClass('active'); // Elimina la clase activa de todos los filtros
+    $(this).addClass('active'); // Agrega la clase activa al filtro seleccionado
   });
 
   $container.imagesLoaded()
   .progress( function() {
-    $container.isotope('layout');
+    $container.isotope('layout');// Reajusta el diseño después de cargar las imágenes
   })
   .done(function() {
   	$('.gsap-reveal-img').each(function() {
@@ -102,23 +106,25 @@ var siteIstotope = function() {
 		}
   })
 
-  $('.js-filter').on('click', function(e) {
-  	e.preventDefault();
-  	$('#filters').toggleClass('active');
+ // Maneja el clic en el botón para mostrar u ocultar los filtros
+ $('.js-filter').on('click', function(e) {
+    e.preventDefault();
+    $('#filters').toggleClass('active'); // Alterna la visibilidad de los filtros
   });
-
 }
 
+// Función para manejar la carga de la página y el efecto del cargador
 var loader = function() {
 	setTimeout(function() {
 		TweenMax.to('.site-loader-wrap', 1, { marginTop: 50, autoAlpha: 0, ease: Power4.easeInOut });
   }, 10);
-  $(".site-loader-wrap").delay(200).fadeOut("slow");
-	$("#unslate_co--overlayer").delay(200).fadeOut("slow");	
+  $(".site-loader-wrap").delay(200).fadeOut("slow"); // Desvanece el cargador
+	$("#unslate_co--overlayer").delay(200).fadeOut("slow");	// Desvanece la superposición
 }
 
-var siteMenuClone = function() {
+// Función para clonar el menú de navegación para la vista móvil
 
+var siteMenuClone = function() {
 	setTimeout(function() {
 
 		$('.js-clone-nav').each(function() {
@@ -159,6 +165,8 @@ var siteMenuClone = function() {
     
   });
 
+
+  // Maneja el redimensionamiento de la ventana para ocultar el menú móvil en pantallas grandes
 	$(window).resize(function() {
 		var $this = $(this),
 			w = $this.width();
@@ -170,6 +178,7 @@ var siteMenuClone = function() {
 		}
 	});
 
+	// Maneja el clic en el botón de menú para alternar la vista móvil
 	$('.js-burger-toggle-menu').click(function(e){
 		e.preventDefault();
 		if ( $('body').hasClass('offcanvas') ) {
@@ -186,12 +195,7 @@ var siteMenuClone = function() {
 
 
 
-// var siteIstotope = function() {
-
-
-	  
-	
-// }
+// Función para inicializar los carruseles con Owl Carousel
 
 var owlCarouselPlugin = function() {
 
@@ -219,7 +223,7 @@ var owlCarouselPlugin = function() {
         }
     }
 	});
-	owlSingleSlider();
+	owlSingleSlider(); // Llama a la función para configurar el carrusel único
 
 	if ( $('.logo-slider').length ) {
 
@@ -249,6 +253,7 @@ var owlCarouselPlugin = function() {
 
 };
 
+// Función para configurar un carrusel único con Owl Carousel
 var owlSingleSlider = function () {
 	if ( $( '.single-slider' ).length ) {
 		$('.single-slider').owlCarousel({
@@ -291,7 +296,7 @@ var floatingLabel = function () {
 
 
 
-// scroll
+// Función para manejar el efecto de desplazamiento
 var scrollWindow = function() {
 	var lastScrollTop = 0;
 	$(window).scroll(function(event){
@@ -520,79 +525,20 @@ var loadPortfolioSinglePage = function(id, href) {
 
 };
 
+// Función para inicializar los efectos de parallax con Jarallax
 var jarallaxPlugin = function() {
 	$('.jarallax').jarallax({
     speed: 0.2
 	});
 	jarallax(document.querySelectorAll('.jarallax-video'), {
     speed: 0.2,
-    videoSrc: 'https://www.youtube.com/watch?v=mwtbEGNABWU',
+    videoSrc: '',
     videoStartTime: 8,
     videoEndTime: 70,
 	});
 };
 
-var contactForm = function() {
-	if ($('#contactForm').length > 0 ) {
-		$( "#contactForm" ).validate( {
-			rules: {
-				name: "required",
-				email: {
-					required: true,
-					email: true
-				},
-				message: {
-					required: true,
-					minlength: 5
-				}
-			},
-			messages: {
-				name: "Please enter your name",
-				email: "Please enter a valid email address",
-				message: "Please enter a message"
-			},
-			errorElement: 'span',
-			errorLabelContainer: '.form-error',
-			/* submit via ajax */
-			submitHandler: function(form) {		
-				var $submit = $('.submitting'),
-					waitText = 'Submitting...';
 
-				$.ajax({   	
-			      type: "POST",
-			      url: "php/send-email.php",
-			      data: $(form).serialize(),
-
-			      beforeSend: function() { 
-			      	$submit.css('display', 'block').text(waitText);
-			      },
-			      success: function(msg) {
-	               if (msg == 'OK') {
-	               	$('#form-message-warning').hide();
-			            setTimeout(function(){
-	               		$('#contactForm').fadeOut();
-	               	}, 1000);
-			            setTimeout(function(){
-			               $('#form-message-success').fadeIn();   
-	               	}, 1400);
-		               
-		            } else {
-		               $('#form-message-warning').html(msg);
-			            $('#form-message-warning').fadeIn();
-			            $submit.css('display', 'none');
-		            }
-			      },
-			      error: function() {
-			      	$('#form-message-warning').html("Something went wrong. Please try again.");
-			         $('#form-message-warning').fadeIn();
-			         $submit.css('display', 'none');
-			      }
-		      });    		
-	  		}
-			
-		} );
-	}
-};
 
 var stickyFillPlugin = function() {
 	var elements = document.querySelectorAll('.unslate_co--sticky');
@@ -673,6 +619,9 @@ var animateReveal = function() {
 			heroNum++;
 		});
 	}
+
+
+	
 
 }
 
