@@ -810,6 +810,13 @@ a, a:hover {
   
 }
 
+.fna {
+  max-width: 100%;
+  height: auto;
+  width: 30%; /* Asegura que el logo sea responsive */
+
+}
+
 @media (max-width: 991.98px) {
   .cover-v1 .subheading {
     font-size: 24px;
