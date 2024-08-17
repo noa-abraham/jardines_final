@@ -49,6 +49,8 @@ blockquote {
 
 
 
+
+
 ::-moz-selection {
   background: #000;
   color: #fff;
@@ -804,7 +806,8 @@ a, a:hover {
 
 .cover-v1 .subheading {
   font-size: 25px;
-  color: #fff;
+  color: #e3d7de;
+  
 }
 
 @media (max-width: 991.98px) {
